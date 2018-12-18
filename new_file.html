@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 引入vue -->
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<el-container >
+				<el-row id='nav1' >
+				  <el-col :span="3" ><div class="grid-content bg-purple-dark"></div></el-col>
+				  <el-col :span="2" ><div class="grid-content bg-purple-dark" style="padding-top: 5px;height: 10px;">
+					<img src="https://t2.chei.com.cn/yz/assets/images/logo-min.png" alt="">
+				  </div></el-col>
+				  <el-col :span="11" id="nava">
+					  <a href="">政策</a>
+					  <a href="">咨询</a>
+					  <a href="">院校库</a>
+					  <a href="">专业库</a>
+					  <a href="">硕士目录</a>
+					  <a href="">网报公告</a>
+					  <a href="">统考网报</a>
+					  <a href="">推免服务</a>
+					  <a href="">网上调剂</a>
+					  <a href="">信息公开</a>
+					  <a href="">在线咨询</a>
+				  </el-col>
+				  <el-col :span="1" >
+					  <el-dropdown>
+						  <span class="el-dropdown-link">
+							<i class="el-icon-more"></i>
+						  </span>
+						  <el-dropdown-menu slot="dropdown" >
+							<el-dropdown-item>专业学位</el-dropdown-item>
+							<el-dropdown-item>专业解析</el-dropdown-item>
+							<el-dropdown-item>复试分数线</el-dropdown-item>
+							<el-dropdown-item >博士目录</el-dropdown-item>
+							<el-dropdown-item >博士网报</el-dropdown-item>
+						  </el-dropdown-menu>
+					  </el-dropdown>
+				  </el-col>
+				  <el-col :span="1" ><div class="grid-content bg-purple-dark"></div></el-col>
+				  <el-col :span="6" ><div class="grid-content bg-purple-dark">
+					<el-tabs >
+						<el-tab-pane label="用户中心 " name="first"></el-tab-pane>
+						<el-tab-pane label="|" name="second"></el-tab-pane>
+						<el-tab-pane label="退出" name="second"></el-tab-pane>
+						<el-tab-pane label="|" name="second"></el-tab-pane>
+						<el-tab-pane label="帮助中心" name="third"></el-tab-pane>
+					</el-tabs>
+				  </div></el-col>
+				</el-row>
+				<el-container>
+					<el-header>
+						<el-row>
+							<el-col :span="3" :offset='3' id='name'><h1>用户中心</h1></el-col>
+							<el-col :span="6" :offset='9' style="padding:8px">
+								<el-row>
+									<el-col :span="6" >18626662326</el-col>
+									<el-col :span="5" :offset='1'><a href="#">咨询客服</a> </el-col>
+									<el-col :span="6" ><a href="#">我的提问</a></el-col>
+									<el-col :span="6" ><a href="#">账号信息</a></el-col>
+								</el-row>
+							</el-col>
+						</el-row>
+					</el-header>
+					<el-main>
+						<el-row>
+							<el-col :span="18" :offset='3' >
+								<el-tabs v-model="activeName" @tab-click="handleClick">
+									<el-tab-pane label="统考硕士招生" name="first">
+										<div class="pic">
+											<div class="son">下载打印《准考证》</div>
+											<p >准考证下载</p>
+											<div class="green">
+												<span>已开通</span>
+											</div>
+											
+										</div>
+										<div class="pic">
+											<div class="son">准考证下载期间进行的网上调查</div>
+											<p >网上调查</p>
+											<div style="height: 20px;background-color:#1787e0;line-height: 20px;color:white">
+												<span>2018-12-14~2018-12-24</span>
+											</div>
+										</div>
+										<div class="pic">
+											<div class="son">查看本年度统考硕士的所有消息通知</div>
+											<p >消息中心</p>
+											<div class="green">
+												<span>查看</span>
+											</div>
+										</div>
+										<div class="pic">
+											<div class="son">向招生单位或省市招办咨询招生相关问题</div>
+											<p >在线咨询</p>
+											<div class="green">
+												<span>已开通</span>
+											</div>
+										</div>
+										
+										<div class="pic">
+											<div class="son">查询当年统考硕士招生专业的考试范围</div>
+											<p >专业目录</p>
+											<div class="green">
+												<span>已开通</span>
+											</div>
+										</div>
+										<div class="pic">
+											<div class="son">各省市招办、招生单位、报考点在网报期间的公告信息</div>
+											<p >网报公告</p>
+											<div class="green">
+												<span>已开通</span>
+											</div>
+										</div>
+										<div class="pic igrey">
+											<div class="son">全国硕士研究生招生考试网上报名系统</div>
+											<p >网上报名</p>
+											<div class="grey">
+												<span>已关闭</span>
+											</div>
+										</div>
+										<div class="pic igrey">
+											<div class="son">全国硕士研究生招生信息公开平台</div>
+											<p >信息公开平台</p>
+											<div class="grey">
+												<span>未开通</span>
+											</div>
+										</div>
+										<div class="pic igrey">
+											<div class="son">全国硕士研究生招生考试调剂服务系统</div>
+											<p >网上调剂</p>
+											<div class="grey">
+												<span>未开通</span>
+											</div>
+										</div>
+										<div class="pic igrey">
+											<div class="son">提前查询缺额并填报调剂意向，可一键转入调剂服务系统</div>
+											<p >调剂意向采集</p>
+											<div class="grey">
+												<span>未开通</span>
+											</div>
+										</div>
+									</el-tab-pane>
+									<el-tab-pane label="推免生招生" name="second">
+										<div class="pic ">
+											<div class="son">查询当年推免生招生专业的考试范围</div>
+											<p >专业目录</p>
+											<div class="green">
+												<span>未开通</span>
+											</div>
+										</div>
+										<div class="pic igrey">
+											<div class="son">推荐免试学生网上报名系统</div>
+											<p >网上报名</p>
+											<div class="grey">
+												<span>未开通</span>
+											</div>
+										</div>
+										<div class="pic ">
+											<div class="son">推免报名期间进行的网上调查</div>
+											<p >网上调查</p>
+											<div class="green">
+												<span>已开通</span>
+											</div>
+										</div>
+										<div class="pic igrey">
+											<div class="son">推免录取信息公开暨备案平台</div>
+											<p >录取信息公开</p>
+											<div class="grey">
+												<span>已关闭</span>
+											</div>
+										</div>
+										<div class="pic igrey">
+											<div class="son">向招生单位或省市招办咨询招生相关问题</div>
+											<p >在线咨询</p>
+											<div class="grey">
+												<span>未开通</span>
+											</div>
+										</div>
+									</el-tab-pane>
+									<el-tab-pane label="博士生招生" name="third">
+										<div class="pic ">
+											<div class="son">全国博士研究生报名信息采集系统</div>
+											<p >网上报名</p>
+											<div class="green">
+												<span>已开通</span>
+											</div>
+										</div>
+										<div class="pic ">
+											<div class="son">博士网报需准备的信息</div>
+											<p >需准备的信息</p>
+											<div class="green">
+												<span>已开通</span>
+											</div>
+										</div>
+										<div class="pic ">
+											<div class="son">查询当年博士研究生招生专业的考试范围</div>
+											<p >专业目录</p>
+											<div class="green">
+												<span>已开通</span>
+											</div>
+										</div>
+										<div class="pic ">
+											<div class="son">博士网报期间进行的网上调查</div>
+											<p >网上调查</p>
+											<div class="green">
+												<span>已开通</span>
+											</div>
+										</div>
+									</el-tab-pane>
+									<el-tab-pane label="面向港澳台招生" name="fourth">
+										<div class="pic">
+											<div class="son">内地高校面向港澳台招收研究生网上报名系统</div>
+											<p >网上报名</p>
+											<div style="height: 20px;background-color:#1787e0;line-height: 20px;color:white">
+												<span>2018-12-1~2018-12-15</span>
+											</div>
+										</div>
+										<div class="pic">
+											<div class="son">内地高校面向港澳台招收研究生准考证下载</div>
+											<p >准考证下载</p>
+											<div style="height: 20px;background-color:#1787e0;line-height: 20px;color:white">
+												<span>2019-03-20~2019-4-14</span>
+											</div>
+										</div>
+										<div class="pic ">
+											<div class="son">内地高校面向港澳台招收研究生网上调查</div>
+											<p >网上调查</p>
+											<div class="green">
+												<span>已开通</span>
+											</div>
+										</div>
+										<div class="pic ">
+											<div class="son">内地高校面向港澳台招生简章（本科、研究生）</div>
+											<p >招生简章</p>
+											<div class="green">
+												<span>已开通</span>
+											</div>
+										</div>
+										<div class="pic ">
+											<div class="son">当年内地高校面向港澳台招收研究生的专业及考试范围</div>
+											<p >专业目录</p>
+											<div class="green">
+												<span>已开通</span>
+											</div>
+										</div>
+										<div class="pic igrey">
+											<div class="son">可向招生单位或报考点咨询关于港澳台招生问题</div>
+											<p >在线咨询</p>
+											<div class="grey">
+												<span>已关闭</span>
+											</div>
+										</div>
+									</el-tab-pane>
+								</el-tabs>
+							</el-col>
+						</el-row>
+					</el-main>
+				</el-container>
+				<el-footer>
+					<el-row>
+						<el-col :span="12" :offset='3' id="linka">
+								<a href="">学信网</a>
+								<a href="">中心简介</a>
+								<a href="">关于我们</a>
+								<a href="">版权声明</a>
+								<a href="">帮助中心</a>
+								<a href="">网站地图</a>
+								<a href="">宣传代理</a>
+								<p>指导单位 ：<a href="">教育部高校学生司</a></p>
+								<p>主办单位 ：<a href="">全国高等学校学生信息咨询与就业指导中心</a></p>
+								<p>Copyright © 2003-2018 学信网 All Rights Reserved </p>
+						</el-col>
+						<el-col :span="9" id="linkb">
+							<p>
+								<img src="img/wechat.png" > <a href="">官方微信</a>
+								<img src="img/sina.png" ><a href="">官方微博</a> 
+							</p>
+							<p>服务热线：010-82199588</p>
+							<p>客服邮箱：kefu#chsi.com.cn（将#替换为@）</p>
+							<p><a href="">京ICP备09057757号</a></p>
+						</el-col>
+					</el-row>
+				</el-footer>
+			</el-container>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el: '#app',
+				data() {
+				  return {
+					activeName: 'first'
+				  };
+				},
+				methods: {
+				  handleClick(tab, event) {
+					
+				  }
+				}
+			})
+		</script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			a{
+				color:#1787e0;
+				font-size: 14px;
+				text-decoration: none;
+			}
+			a:hover{
+				text-decoration: underline;
+			}
+			#nava a{
+				color: #333;
+				font-size: 12px;
+				margin-right: 18px;
+			}
+			#nav1>.el-col{
+				height: 40px;
+				line-height: 40px;
+				background: #f7f9fa;
+				border-bottom: 1px solid #d6d6d6;
+				font-size: 12px;
+			}
+			#name{
+				color: #1787e0;
+				font-size: 30px;
+				line-height: 80px;
+				text-align: left;
+			}
+			.el-menu-item{
+				padding: 0 7px;
+				height: 38px !important;
+				background-color: #f7f9fa;
+				line-height: 39px !important;
+			}
+			.el-tabs__item{
+				padding:0 5px;
+				font-size: 12px;
+			}
+			.el-menu.el-menu--horizontal,
+			.el-menu{
+				border: none;
+			}
+			.el-menu-demo {
+				background-color: transparent;
+			}
+			.el-main{
+				line-height: 50px !important;
+				background-color: transparent !important;
+			}
+			.pic{
+				height: 95px;
+				width: 180px;
+				border: 1px solid #e7e7e7;
+				border-radius: 2px;
+				float: left;
+				margin-right:18px;
+				margin-top: 16px;
+				padding: 8px;
+				position: relative;
+			}
+			.son{
+				height: 72px;
+				width: 206px;
+				background-color: #1787e0;
+				opacity: 0.9;
+				color:white;
+				padding:20px 0;
+				position: absolute;
+				left:-10px;
+				top:0px;
+				display: none;
+				font-size: 14px;
+			}
+			.pic:hover .son{
+				display: block;
+				
+			}
+			.pic p{
+				font-size: 23px;
+			}
+			.green{
+				height: 20px;
+				width:50px;
+				background-color:#6dd458;
+				color: white;
+				line-height: 17px !important;
+				margin: 0 auto;
+			}
+			.grey{
+				height: 20px;
+				width:50px;
+				background-color:#CBCBCB;
+				color: white;
+				line-height: 17px !important;
+				margin: 0 auto;
+			}
+			.igrey{
+				color:#cbcbcb
+			}
+			.el-header,
+			.el-footer {
+				
+				color: #333;
+				text-align: center;
+				line-height: 60px;
+				padding: 0;
+			}
+			.el-header{
+				background-color: transparent;
+				height: 80px !important;
+				border-bottom: 2px solid #1787e0;
+			}
+			.el-footer{
+				height: 200px !important;
+				background-color: #282828;
+				color:#ababab;
+				line-height: 40px !important;
+			}
+			
+			.el-main {
+				background-color: #E9EEF3;
+				color: #333;
+				text-align: center;
+				height: 560px;
+			}
+			
+			body>.el-container {
+				margin-bottom: 40px;
+			}
+			body{
+				margin: 0;
+				padding: 0;
+			}
+			#linka,
+			#linkb{
+				text-align: left;
+			}
+			#linka a,
+			#linkb a{
+				color: #ababab;
+			}
+			
+			
+			
+			
+		</style>
+	</body>
+</html>
